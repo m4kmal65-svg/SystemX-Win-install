@@ -1,24 +1,41 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const menus = document.querySelectorAll(".menu"),
-    pages = document.querySelectorAll(".page"),
-    title = document.getElementById("page-title");
-  menus.forEach((menu) =>
-    menu.addEventListener("click", () => {
-      const target = menu.dataset.page;
-      menus.forEach((x) => x.classList.remove("active"));
-      menu.classList.add("active");
-      pages.forEach((p) => p.classList.toggle("active", p.id === target));
-      if (title) {
-        const labels = {
-          dashboard: "Dashboard",
-          cpu: "CPU Monitor",
-          ram: "Memory",
-          gpu: "GPU",
-          storage: "Storage",
-          network: "Network",
-        };
-        title.textContent = labels[target] || "Dashboard";
-      }
-    }),
-  );
-});
+```javascript
+function updatePerformance() {
+
+    const cpu =
+        Math.floor(Math.random() * 35) + 25;
+
+    const ram =
+        Math.floor(Math.random() * 25) + 45;
+
+    const storage =
+        Math.floor(Math.random() * 30) + 25;
+
+
+    document.getElementById("cpu").textContent =
+        cpu + "%";
+
+    document.getElementById("ram").textContent =
+        ram + "%";
+
+    document.getElementById("storage").textContent =
+        storage + "%";
+
+
+    document.getElementById("cpuBar").style.width =
+        cpu + "%";
+
+    document.getElementById("ramBar").style.width =
+        ram + "%";
+
+    document.getElementById("storageBar").style.width =
+        storage + "%";
+}
+
+
+updatePerformance();
+
+setInterval(
+    updatePerformance,
+    2000
+);
+```
